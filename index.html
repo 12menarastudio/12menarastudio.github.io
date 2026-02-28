@@ -112,6 +112,411 @@
             z-index: 10;
         }
         .layar-hp {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: relative;
+}
+.layar-hp iframe {
+    width: 400px;          /* Membuat sistem mengira ini HP asli lebar 400px */
+    height: 800px;         /* Tinggi HP asli */
+    transform: scale(0.6); /* Mengecilkan tampilan jadi 60% agar muat di bingkai */
+    transform-origin: top left; /* Titik kumpul pengecilan di pojok kiri atas */
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;  /* Tetap mematikan fungsi klik di dalam layar */
+}
+
+
+        /* --- PAKET HARGA SULTAN --- */
+        .grid-harga { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+        .card-harga { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px 30px; text-align: center; transition: 0.3s; position: relative;}
+        .card-harga.vip { background: linear-gradient(145deg, rgba(212,175,55,0.1) 0%, rgba(11,19,43,0) 100%); border-color: var(--gold); transform: scale(1.05); box-shadow: 0 15px 40px rgba(212,175,55,0.2);}
+        .card-harga:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .card-harga.vip:hover { transform: scale(1.05) translateY(-5px); }
+        .badge-populer { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); padding: 5px 15px; border-radius: 50px; font-size: 10px; font-weight: bold; letter-spacing: 1px;}
+        
+        /* Taktik Psikologis: Sisa Slot */
+        .sisa-slot { font-size: 11px; color: #ff6b6b; font-weight: 600; margin-bottom: 10px; display: inline-block; padding: 4px 10px; border: 1px dashed #ff6b6b; border-radius: 5px; animation: pulse 2s infinite;}
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        .harga-title { font-family: var(--font-heading); font-size: 24px; color: var(--light); margin-bottom: 5px;}
+        .harga-nominal { font-size: 35px; color: var(--gold); font-weight: 700; margin-bottom: 20px;}
+        .harga-list { list-style: none; margin-bottom: 30px; text-align: left; }
+        .harga-list li { font-size: 13px; color: var(--gray); margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; }
+        .harga-list li::before { content: '✓'; color: var(--gold); font-weight: bold; }
+        
+        /* --- FAQ --- */
+        .faq-container { max-width: 800px; margin: 0 auto; text-align: left; }
+        .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; margin-bottom: 15px; padding: 20px; }
+        .faq-q { font-family: var(--font-heading); font-size: 16px; color: var(--gold); margin-bottom: 10px; }
+        .faq-a { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+        /* --- CTA --- */
+        .cta-section { background: linear-gradient(rgba(11,19,43,0.9), rgba(11,19,43,0.9)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1080&auto=format&fit=crop') center/cover fixed; padding: 100px 20px; text-align: center; }
+        .btn-wa-besar { background: transparent; color: var(--gold); padding: 18px 40px; font-size: 15px; font-weight: 600; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; border: 2px solid var(--gold); transition: 0.3s; letter-spacing: 1px; cursor: pointer;}
+        .btn-wa-besar:hover { background: var(--gold); color: var(--navy); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+
+        /* --- MODAL FORM --- */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 0.4s ease; z-index: 9999; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-box { background: rgba(11, 19, 43, 0.95); border: 1px solid var(--gold); border-radius: 20px; width: 90%; max-width: 500px; max-height: 85vh; display: flex; flex-direction: column; transform: translateY(30px) scale(0.95); transition: 0.4s; box-shadow: 0 25px 50px rgba(0,0,0,0.8); position: relative; }
+        .modal-overlay.active .modal-box { transform: translateY(0) scale(1); }
+        .btn-close { position: absolute; top: 20px; right: 25px; font-size: 28px; color: var(--gray); cursor: pointer; transition: 0.3s; line-height: 1; z-index: 10; }
+        .btn-close:hover { color: var(--gold); }
+        .modal-header { padding: 25px 30px 15px; border-bottom: 1px solid rgba(212,175,55,0.1); text-align: left;}
+        .modal-header h2 { font-family: var(--font-heading); font-size: 22px; color: var(--gold); }
+        .modal-header p { font-size: 11px; color: var(--gray); margin-top: 5px;}
+        .modal-body { padding: 20px 30px; overflow-y: auto; text-align: left; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 11px; color: var(--gray); margin-bottom: 8px; text-transform: uppercase;}
+        .form-control { width: 100%; padding: 12px 15px; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: var(--light); font-family: var(--font-body); font-size: 13px; transition: 0.3s; outline: none; }
+        .form-control:focus { border-color: var(--gold); }
+        .modal-footer { padding: 15px 30px; border-top: 1px solid rgba(212,175,55,0.1); text-align: right; }
+        .btn-submit-modal { background: var(--gold); color: var(--navy); border: none; padding: 12px 30px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .btn-submit-modal:hover { box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); transform: translateY(-2px);}
+
+        /* --- FOOTER --- */
+        footer { background: #060B19; text-align: center; padding: 40px 20px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-logo { font-family: var(--font-logo); font-size: 30px; color: var(--gold); margin-bottom: 10px; display: block; }
+        .footer-text { font-size: 12px; color: var(--gray); letter-spacing: 1px;}
+
+        /* --- KODE CSS UNTUK NOTIFIKASI PEMBELIAN (SOCIAL PROOF) --- */
+        #sales-popup {
+            position: fixed; bottom: 20px; left: -350px;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px);
+            border-left: 4px solid var(--gold); border-radius: 8px;
+            padding: 15px; display: flex; align-items: center; gap: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 9999;
+            width: 300px; transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #sales-popup.show { left: 20px; }
+        .sp-icon { font-size: 24px; background: rgba(212,175,55,0.1); padding: 10px; border-radius: 50%; }
+        .sp-text p { font-size: 12px; color: #333; margin-bottom: 3px; font-family: var(--font-body); line-height: 1.4;}
+        .sp-text p strong { color: var(--navy); }
+        .sp-time { font-size: 10px; color: #888; }
+        
+        @media (max-width: 768px) {
+            #sales-popup { width: calc(100% - 40px); bottom: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="sales-popup">
+        <div class="sp-icon">💍</div>
+        <div class="sp-text">
+            <p id="sp-message"><strong>Andi & Risa</strong> dari Jakarta baru saja memesan <strong>Paket Gold VIP</strong></p>
+            <div class="sp-time" id="sp-time">Baru saja</div>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo">12 Menara</div>
+            <div class="logo-tag">Studio & Creative</div>
+        </div>
+        <div class="nav-links">
+            <a href="#fitur">Fitur VIP</a>
+            <a href="#tema">Katalog Tema</a>
+            <a href="#harga">Paket Harga</a>
+            <a href="javascript:void(0)" onclick="bukaModal()" class="btn-nav">Pesan Sekarang</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="badge-premium" data-aos="fade-down">Premium Digital Wedding Invitation</div>
+        <h1 data-aos="zoom-in" data-aos-delay="100">Sebarkan Momen Bahagia Anda dengan Undangan VIP</h1>
+        <p data-aos="fade-up" data-aos-delay="200">Bukan sekadar *link* biasa. Kami merakit undangan digital sinematik dengan desain eksklusif, fitur buku tamu cerdas, dan jaminan keamanan data untuk tamu kehormatan Anda.</p>
+        <a href="#tema" class="btn-utama" data-aos="fade-up" data-aos-delay="300">Lihat Katalog Tema</a>
+    </section>
+
+    <section id="fitur" class="section-wrapper">
+        <h2 class="section-title" data-aos="fade-down">Fasilitas Undangan Kelas Atas</h2>
+        <p class="section-subtitle" data-aos="fade-in">Standar baru dalam mengundang tamu. Elegan, praktis, dan memukau.</p>
+        <div class="grid-pilar">
+            <div class="card-pilar" data-aos="fade-up">
+                <div class="ikon-pilar">🎨</div>
+                <h3>Desain Sinematik & AI Art</h3>
+                <p>Visual yang tidak pasaran. Kami memadukan seni desain dengan kecerdasan buatan (AI) untuk hasil yang sangat personal dan mewah.</p>
+            </div>
+            <div class="card-pilar" data-aos="fade-up" data-aos-delay="100">
+                <div class="ikon-pilar">✉️</div>
+                <h3>RSVP & Buku Tamu Cerdas</h3>
+                <p>Pantau jumlah tamu yang akan hadir secara *real-time* langsung dari *dashboard* atau WhatsApp Anda.</p>
+            </div>
+            <div class="card-pilar" data-aos="fade-up" data-aos-delay="200">
+                <div class="ikon-pilar">🎁</div>
+                <h3>Amplop Digital Aman</h3>
+                <p>Terima kado pernikahan berupa transfer bank atau QRIS langsung ke rekening Anda tanpa potongan sistem.</p>
+            </div>
+            <div class="card-pilar" data-aos="fade-up" data-aos-delay="300">
+                <div class="ikon-pilar">🌐</div>
+                <h3>Private Custom Link</h3>
+                <p>Tinggalkan *link* gratisan yang aneh. Gunakan nama Anda sendiri (contoh: romeojuliet.com) untuk kesan VVIP.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tema" class="section-wrapper portfolio-bg">
+        <h2 class="section-title" data-aos="fade-down">Katalog Tema Eksklusif</h2>
+        <p class="section-subtitle" data-aos="fade-in">Pilih mahakarya yang paling mencerminkan kepribadian Anda dan pasangan.</p>
+
+        <div class="grid-portfolio">
+            
+            <div class="card-portfolio" data-aos="fade-up">
+                <a href="romeo-juliet/index.html" target="_blank" style="display: block; cursor: pointer;">
+                    <div class="hp-mockup-wrapper">
+                        <span class="label-kategori" style="z-index: 20;">Premium VIP Demo</span>
+                        <div class="bingkai-hp">
+                            <div class="layar-hp">
+                                <iframe src="romeo-juliet/index.html" scrolling="no" style="pointer-events: none; width: 100%; height: 100%; border: none;"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <div class="info-portfolio">
+                    <h3>Tema Romeo & Juliet</h3>
+                    <p>Desain eksklusif bernuansa Cinematic Premium. Dilengkapi animasi 3D, buku tamu cerdas, dan hitung mundur otomatis.</p>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 15px; align-items: center;">
+                        <a href="romeo-juliet/index.html" target="_blank" class="link-beli" style="color: var(--gold); border-bottom: 1px solid var(--gold); font-weight: bold;">👁️ Lihat Demo</a>
+                        <span style="color: var(--gray);">|</span>
+                        <a href="javascript:void(0)" onclick="bukaModalTema('Tema Romeo Juliet')" class="link-beli">🛒 Pesan ⟶</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-portfolio" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-wrapper">
+                    <span class="label-kategori">Best Seller</span>
+                    <img src="https://i.postimg.cc/SQP4bSQ2/1772015444091.png" alt="Royal Navy">
+                </div>
+                <div class="info-portfolio">
+                    <h3>The Royal Navy</h3>
+                    <p>Elegan dan berwibawa. Perpaduan warna biru malam dan emas, sangat cocok untuk resepsi di gedung mewah.</p>
+                    <a href="javascript:void(0)" onclick="bukaModalTema('The Royal Navy')" class="link-beli">🛒 Pesan Tema Ini ⟶</a>
+                </div>
+            </div>
+
+            <div class="card-portfolio" data-aos="fade-up" data-aos-delay="200">
+                <div class="img-wrapper">
+                    <span class="label-kategori">Custom AI</span>
+                    <img src="https://i.postimg.cc/g0QqBpcL/1771862655635.png" alt="AI Custom">
+                </div>
+                <div class="info-portfolio">
+                    <h3>Custom AI Request</h3>
+                    <p>Punya konsep sendiri? Tim Prompt Engineer kami siap merakit ilustrasi khusus untuk Anda.</p>
+                    <a href="javascript:void(0)" onclick="bukaModalTema('Custom AI Tema')" class="link-beli">💡 Konsultasi Tema ⟶</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="harga" class="section-wrapper">
+        <h2 class="section-title" data-aos="fade-down">Investasi Momen Bahagia</h2>
+        <p class="section-subtitle" data-aos="fade-in">Pilih paket layanan yang sesuai dengan kebutuhan acara Anda.</p>
+        
+        <div class="grid-harga">
+            <div class="card-harga" data-aos="fade-up">
+                <h3 class="harga-title">Silver</h3>
+                <div class="harga-nominal">Rp 150K</div>
+                <ul class="harga-list">
+                    <li>Desain Tema Standar Pilihan</li>
+                    <li>Galeri Foto (Maks 10)</li>
+                    <li>Hitung Mundur Waktu Acara</li>
+                    <li>Link: 12menarastudio.com/nama</li>
+                    <li>Aktif 3 Bulan</li>
+                </ul>
+                <a href="javascript:void(0)" onclick="bukaModalTema('Paket Silver')" class="btn-nav" style="display: block; width: 100%;">Pilih Silver</a>
+            </div>
+
+            <div class="card-harga vip" data-aos="fade-up" data-aos-delay="100">
+                <div class="badge-populer">TERLARIS</div>
+                <h3 class="harga-title">Gold VIP</h3>
+                <div class="harga-nominal">Rp 350K</div>
+                <ul class="harga-list">
+                    <li>Semua Fitur Silver</li>
+                    <li>Bebas Custom Lagu & Warna</li>
+                    <li>Fitur RSVP & Amplop Digital QRIS</li>
+                    <li>Link: nama.12menarastudio.com (Eksklusif)</li>
+                    <li>Aktif 1 Tahun</li>
+                </ul>
+                <a href="javascript:void(0)" onclick="bukaModalTema('Paket Gold VIP')" class="btn-utama" style="display: block; width: 100%;">Pilih Gold VIP</a>
+            </div>
+
+            <div class="card-harga" data-aos="fade-up" data-aos-delay="200">
+                <span class="sisa-slot">Sisa 2 Slot Bulan Ini!</span>
+                <h3 class="harga-title">Sultan Domain</h3>
+                <div class="harga-nominal">Rp 950K</div>
+                <ul class="harga-list">
+                    <li>Semua Fitur Gold VIP</li>
+                    <li>Desain Visual Custom by AI</li>
+                    <li>Prioritas Pengerjaan 24 Jam</li>
+                    <li>Link: namapasangan.com (Domain Premium)</li>
+                    <li>Aktif Selamanya (Lifetime)</li>
+                </ul>
+                <a href="javascript:void(0)" onclick="bukaModalTema('Paket Sultan')" class="btn-nav" style="display: block; width: 100%;">Pilih Sultan</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-wrapper portfolio-bg">
+        <h2 class="section-title" data-aos="fade-down">Pertanyaan Umum (FAQ)</h2>
+        <div class="faq-container" data-aos="fade-up">
+            <div class="faq-item">
+                <h4 class="faq-q">Berapa lama proses pengerjaan undangannya?</h4>
+                <p class="faq-a">Untuk paket Silver & Gold, proses pengerjaan memakan waktu 1-3 hari kerja setelah data pengantin dan foto lengkap. Untuk paket Sultan, kami berikan prioritas jalur VIP selesai dalam 24 jam.</p>
+            </div>
+            <div class="faq-item">
+                <h4 class="faq-q">Apakah bisa dibuatkan gambar jika belum foto Pre-Wedding?</h4>
+                <p class="faq-a">Sangat bisa! Inilah keunggulan 12 Menara Studio. Kami menggunakan teknologi AI Art untuk menciptakan ilustrasi pasangan yang estetik dan hiper-realistis sesuai permintaan Anda.</p>
+            </div>
+            <div class="faq-item">
+                <h4 class="faq-q">Apakah ada garansi revisi jika ada data yang salah ketik?</h4>
+                <p class="faq-a">Tentu saja. Kami memberikan garansi revisi teks dan data (seperti perubahan jam acara atau lokasi) tanpa batas hingga hari-H pernikahan Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2 style="font-family: var(--font-heading); font-size: 35px; color: var(--gold); margin-bottom: 20px;" data-aos="zoom-in">Siap Menciptakan Undangan Impian?</h2>
+        <p style="font-size: 15px; color: var(--light); opacity: 0.9; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;" data-aos="fade-up">Diskusikan konsep pernikahan Anda dengan tim kami sekarang juga.</p>
+        <button onclick="bukaModal()" class="btn-wa-besar" data-aos="fade-up" data-aos-delay="100">
+            💬 Pesan via WhatsApp Sekarang
+        </button>
+    </section>
+
+    <footer>
+        <span class="footer-logo">12 Menara Studio</span>
+        <p class="footer-text">Spesialis Undangan Pernikahan Digital Eksklusif</p>
+        <div style="width: 50px; height: 1px; background: var(--gold); margin: 20px auto; opacity: 0.5;"></div>
+        <p class="footer-text" style="opacity: 0.4;">© 2026 12 Menara Studio. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <div class="modal-overlay" id="orderModal" onclick="tutupModalLuar(event)">
+        <div class="modal-box">
+            <span class="btn-close" onclick="tutupModal()">&times;</span>
+            <div class="modal-header">
+                <h2>Formulir Pemesanan VIP</h2>
+                <p>Data ini akan dikirim langsung ke WhatsApp 12 Menara Studio.</p>
+            </div>
+
+            <div class="modal-body">
+                <form id="formPemesanan" onsubmit="kirimKeWA(event)">
+                    <div class="input-group">
+                        <label>Tema / Paket Pilihan</label>
+                        <select class="form-control" id="waTema" required>
+                            <option value="" disabled selected>Pilih Tema atau Paket...</option>
+                            <option value="Tema Royal Navy">Tema Royal Navy</option>
+                            <option value="Tema Rustic Floral">Tema Rustic Floral</option>
+                            <option value="Tema Custom AI">Tema Custom AI</option>
+                            <option value="Paket Silver">Paket Silver (Rp 150K)</option>
+                            <option value="Paket Gold VIP">Paket Gold VIP (Rp 350K)</option>
+                            <option value="Paket Sultan Domain">Paket Sultan Domain (Rp 950K)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Nama Anda / Pasangan</label>
+                        <input type="text" class="form-control" id="waNama" placeholder="Cth: Romeo & Juliet" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Tanggal Rencana Pernikahan</label>
+                        <input type="text" class="form-control" id="waTanggal" placeholder="Cth: 28 Maret 2026" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Pesan Tambahan</label>
+                        <textarea class="form-control" id="waCatatan" rows="3" placeholder="Sebutkan detail lain (Misal: Saya mau warna biru tua ditonjolkan)..."></textarea>
+                    </div>
+                    
+                    <button type="submit" id="hiddenSubmit" style="display: none;"></button>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-submit-modal" onclick="document.getElementById('hiddenSubmit').click()">📲 Kirim ke WhatsApp</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 1000 });
+
+        const modal = document.getElementById('orderModal');
+        const selectTema = document.getElementById('waTema');
+
+        function bukaModal() { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function bukaModalTema(namaTema) {
+            bukaModal();
+            for(let i=0; i < selectTema.options.length; i++) {
+                if(selectTema.options[i].value.includes(namaTema)) { selectTema.selectedIndex = i; break; }
+            }
+        }
+        function tutupModal() { modal.classList.remove('active'); document.body.style.overflow = 'auto'; }
+        function tutupModalLuar(event) { if (event.target === modal) tutupModal(); }
+
+        function kirimKeWA(event) {
+            event.preventDefault(); 
+            const tema = document.getElementById('waTema').value;
+            const nama = document.getElementById('waNama').value;
+            const tanggal = document.getElementById('waTanggal').value;
+            const catatan = document.getElementById('waCatatan').value;
+            const nomorAdmin = "6281234567890"; 
+            const teksPesan = `Halo 12 Menara Studio! 👑\nSaya tertarik untuk memesan Undangan Digital VIP.\n\n*Detail Pesanan:*\n- Pilihan/Paket : ${tema}\n- Nama Pasangan : ${nama}\n- Rencana Acara : ${tanggal}\n- Catatan : ${catatan ? catatan : "Tidak ada catatan khusus"}\n\nMohon info detail dan langkah selanjutnya. Terima kasih!`;
+            const linkWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(teksPesan)}`;
+            window.open(linkWA, '_blank');
+            tutupModal();
+            event.target.reset();
+        }
+
+        const popup = document.getElementById('sales-popup');
+        const spMessage = document.getElementById('sp-message');
+        const spTime = document.getElementById('sp-time');
+
+        const dataPembeli = [
+            { nama: "Budi & Ani", kota: "Jakarta", produk: "Paket Gold VIP" },
+            { nama: "Rio & Nisa", kota: "Surabaya", produk: "Tema Royal Navy" },
+            { nama: "Tyo & Dina", kota: "Bandung", produk: "Paket Sultan Domain" },
+            { nama: "Siska & Doni", kota: "Medan", produk: "Tema Rustic Floral" },
+            { nama: "Agus & Fitri", kota: "Semarang", produk: "Paket Gold VIP" }
+        ];
+
+        function munculkanNotifikasi() {
+            const acak = Math.floor(Math.random() * dataPembeli.length);
+            const data = dataPembeli[acak];
+            const waktuAcak = Math.floor(Math.random() * 15) + 1;
+
+            spMessage.innerHTML = `<strong>${data.nama}</strong> dari ${data.kota} baru saja memesan <strong>${data.produk}</strong>`;
+            spTime.innerText = `${waktuAcak} menit yang lalu`;
+
+            popup.classList.add('show');
+            setTimeout(() => { popup.classList.remove('show'); }, 6000);
+        }
+
+        setTimeout(() => {
+            munculkanNotifikasi();
+            setInterval(munculkanNotifikasi, 20000);
+        }, 8000);
+
+    </script>
+</body>
+</html>            transform: translateX(-50%);
+            width: 100px;
+            height: 20px;
+            background-color: #111;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 10;
+        }
+        .layar-hp {
             width: 100%;
             height: 100%;
             background-color: #fff;
