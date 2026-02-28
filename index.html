@@ -9,7 +9,6 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* ... [CSS SEBELUMNYA TETAP SAMA] ... */
         :root {
             --navy: #0B132B;
             --navy-light: #1A2A5C;
@@ -73,6 +72,56 @@
         .link-beli { color: var(--light); font-size: 12px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: 0.3s; border-bottom: 1px solid transparent; padding-bottom: 2px; cursor: pointer;}
         .card-portfolio:hover .link-beli { color: var(--gold); border-color: var(--gold); }
 
+        /* --- BINGKAI HP MOCKUP (KHUSUS DEMO ROMEO & JULIET) --- */
+        .hp-mockup-wrapper {
+            position: relative;
+            width: 100%;
+            background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, rgba(0,0,0,1) 100%);
+            padding: 30px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+            overflow: hidden;
+        }
+        .bingkai-hp {
+            width: 240px;            /* Ukuran yang pas untuk di dalam kartu Grid */
+            height: 480px;           
+            border: 10px solid #111; /* Bezel hitam */
+            border-radius: 35px;     /* Melengkung ala iPhone */
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 0 2px #444; /* Lis besi keliling */
+            background-color: #000;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+        }
+        .bingkai-hp:hover {
+            transform: scale(1.05);  /* Efek membesar jika disentuh */
+        }
+        .bingkai-hp::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 20px;
+            background-color: #111;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 10;
+        }
+        .layar-hp {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
+        .layar-hp iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         /* --- PAKET HARGA SULTAN --- */
         .grid-harga { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
         .card-harga { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px 30px; text-align: center; transition: 0.3s; position: relative;}
@@ -128,21 +177,21 @@
 
         /* --- KODE CSS UNTUK NOTIFIKASI PEMBELIAN (SOCIAL PROOF) --- */
         #sales-popup {
-            position: fixed; bottom: 20px; left: -350px; /* Sembunyi di luar layar */
+            position: fixed; bottom: 20px; left: -350px;
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px);
             border-left: 4px solid var(--gold); border-radius: 8px;
             padding: 15px; display: flex; align-items: center; gap: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 9999;
             width: 300px; transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        #sales-popup.show { left: 20px; } /* Muncul ke layar */
+        #sales-popup.show { left: 20px; }
         .sp-icon { font-size: 24px; background: rgba(212,175,55,0.1); padding: 10px; border-radius: 50%; }
         .sp-text p { font-size: 12px; color: #333; margin-bottom: 3px; font-family: var(--font-body); line-height: 1.4;}
         .sp-text p strong { color: var(--navy); }
         .sp-time { font-size: 10px; color: #888; }
         
         @media (max-width: 768px) {
-            #sales-popup { width: calc(100% - 40px); bottom: 15px; } /* Sesuaikan ukuran untuk HP */
+            #sales-popup { width: calc(100% - 40px); bottom: 15px; }
         }
     </style>
 </head>
@@ -208,7 +257,30 @@
         <p class="section-subtitle" data-aos="fade-in">Pilih mahakarya yang paling mencerminkan kepribadian Anda dan pasangan.</p>
 
         <div class="grid-portfolio">
+            
             <div class="card-portfolio" data-aos="fade-up">
+                <div class="hp-mockup-wrapper">
+                    <span class="label-kategori" style="z-index: 20;">Premium VIP Demo</span>
+                    <div class="bingkai-hp">
+                        <div class="layar-hp">
+                            <iframe src="romeo-juliet/index.html"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-portfolio">
+                    <h3>Tema Romeo & Juliet</h3>
+                    <p>Desain eksklusif bernuansa Cinematic Premium. Dilengkapi animasi 3D, buku tamu cerdas, dan hitung mundur otomatis.</p>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 15px; align-items: center;">
+                        <a href="romeo-juliet/index.html" target="_blank" class="link-beli" style="color: var(--gold); border-bottom: 1px solid var(--gold); font-weight: bold;">👁️ Layar Penuh</a>
+                        <span style="color: var(--gray);">|</span>
+                        <a href="javascript:void(0)" onclick="bukaModalTema('Tema Romeo Juliet')" class="link-beli">🛒 Pesan ⟶</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-portfolio" data-aos="fade-up" data-aos-delay="100">
                 <div class="img-wrapper">
                     <span class="label-kategori">Best Seller</span>
                     <img src="https://i.postimg.cc/SQP4bSQ2/1772015444091.png" alt="Royal Navy">
@@ -220,29 +292,6 @@
                 </div>
             </div>
 
-           <div class="card-portfolio" data-aos="fade-up">
-                <div class="img-wrapper">
-                    <span class="label-kategori">Premium VIP</span>
-                    <img src="https://i.postimg.cc/SQP4bSQ2/1772015444091.png" alt="Romeo Juliet">
-                </div>
-                <div class="info-portfolio">
-                    <h3>Tema Romeo & Juliet</h3>
-                    <p>Desain eksklusif bernuansa Cinematic Premium. Dilengkapi animasi 3D, buku tamu cerdas, dan hitung mundur otomatis.</p>
-                    
-                    <div style="display: flex; gap: 15px; margin-top: 15px; align-items: center;">
-                        <a href="romeo-juliet/" target="_blank" class="link-beli" style="color: var(--gold); border-bottom: 1px solid var(--gold); font-weight: bold;">👁️ Lihat Demo</a>
-                        <span style="color: var(--gray);">|</span>
-                        <a href="javascript:void(0)" onclick="bukaModalTema('Tema Romeo Juliet')" class="link-beli">🛒 Pesan ⟶</a>
-                    </div>
-                </div>
-            </div>
-                <div class="info-portfolio">
-                    <h3>Rustic Floral Fairytale</h3>
-                    <p>Hangat dan romantis. Cocok untuk konsep pernikahan *outdoor* atau kebun dengan sentuhan bunga pastel.</p>
-                    <a href="javascript:void(0)" onclick="bukaModalTema('Rustic Floral')" class="link-beli">🛒 Pesan Tema Ini ⟶</a>
-                </div>
-            </div>
-
             <div class="card-portfolio" data-aos="fade-up" data-aos-delay="200">
                 <div class="img-wrapper">
                     <span class="label-kategori">Custom AI</span>
@@ -250,10 +299,11 @@
                 </div>
                 <div class="info-portfolio">
                     <h3>Custom AI Request</h3>
-                    <p>Punya konsep sendiri? Tim *Prompt Engineer* kami siap merakit ilustrasi karakter atau latar belakang khusus untuk Anda.</p>
+                    <p>Punya konsep sendiri? Tim Prompt Engineer kami siap merakit ilustrasi khusus untuk Anda.</p>
                     <a href="javascript:void(0)" onclick="bukaModalTema('Custom AI Tema')" class="link-beli">💡 Konsultasi Tema ⟶</a>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -417,14 +467,10 @@
             event.target.reset();
         }
 
-        // ==========================================
-        // MESIN NOTIFIKASI PALSU (SOCIAL PROOF)
-        // ==========================================
         const popup = document.getElementById('sales-popup');
         const spMessage = document.getElementById('sp-message');
         const spTime = document.getElementById('sp-time');
 
-        // Database data pembeli acak (Bisa Anda tambah/ganti namanya)
         const dataPembeli = [
             { nama: "Budi & Ani", kota: "Jakarta", produk: "Paket Gold VIP" },
             { nama: "Rio & Nisa", kota: "Surabaya", produk: "Tema Royal Navy" },
@@ -434,33 +480,20 @@
         ];
 
         function munculkanNotifikasi() {
-            // Pilih data acak dari array
             const acak = Math.floor(Math.random() * dataPembeli.length);
             const data = dataPembeli[acak];
-            
-            // Waktu acak (1 - 15 menit yang lalu)
             const waktuAcak = Math.floor(Math.random() * 15) + 1;
 
-            // Masukkan teks ke dalam HTML
             spMessage.innerHTML = `<strong>${data.nama}</strong> dari ${data.kota} baru saja memesan <strong>${data.produk}</strong>`;
             spTime.innerText = `${waktuAcak} menit yang lalu`;
 
-            // Munculkan kotak (tambah class show)
             popup.classList.add('show');
-
-            // Sembunyikan lagi setelah 6 detik
-            setTimeout(() => {
-                popup.classList.remove('show');
-            }, 6000);
+            setTimeout(() => { popup.classList.remove('show'); }, 6000);
         }
 
-        // Jalankan notifikasi pertama setelah pengunjung diam di web selama 8 detik
         setTimeout(() => {
             munculkanNotifikasi();
-            
-            // Lalu ulangi setiap 20 detik
             setInterval(munculkanNotifikasi, 20000);
-            
         }, 8000);
 
     </script>
