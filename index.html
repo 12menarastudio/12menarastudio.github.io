@@ -281,7 +281,7 @@
         .harga-nominal { font-size: 40px; color: var(--gold); font-weight: 700; margin-bottom: 25px; line-height: 1;}
         .harga-list { list-style: none; margin-bottom: 35px; text-align: left; }
         .harga-list li { font-size: 13px; color: var(--light); opacity: 0.8; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; }
-        .harga-list li::before { content: '✓'; color: var(--gold); font-weight: bold; font-size: 16px; }
+        .harga-list li::before { content: ''; color: var(--gold); font-weight: bold; font-size: 16px; }
         
         .btn-harga-biasa { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--light); padding: 12px 0; border-radius: 50px; transition: 0.3s; display: block; width: 100%; font-size: 13px; letter-spacing: 1px;}
         .btn-harga-biasa:hover { border-color: var(--gold); color: var(--gold); }
@@ -348,7 +348,7 @@
         summary.faq-q::-webkit-details-marker { display: none; } 
         
         summary.faq-q::after { content: '+'; font-size: 24px; color: var(--gold); transition: 0.4s; font-weight: 300; }
-        details.faq-item[open] summary.faq-q::after { content: '−'; transform: rotate(180deg); color: var(--light); }
+        details.faq-item[open] summary.faq-q::after { content: ''; transform: rotate(180deg); color: var(--light); }
         
         .faq-a { font-size: 13px; color: #d1d8e0; line-height: 1.7; margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(212, 175, 55, 0.3); }
 
@@ -400,7 +400,7 @@
 <body>
 
     <div id="sales-popup">
-        <div class="sp-icon">💍</div>
+        <div class="sp-icon"></div>
         <div class="sp-text">
             <p id="sp-message"><strong>Andi & Risa</strong> dari Jakarta baru saja memesan <strong>Paket Gold VIP</strong></p>
             <div class="sp-time" id="sp-time">Baru saja</div>
@@ -480,6 +480,25 @@
                 <p class="section-subtitle" data-aos="fade-in">Pilih mahakarya yang paling mencerminkan kepribadian Anda dan pasangan.</p>
 
                 <div class="grid-portfolio">
+                <div class="card-portfolio" data-aos="fade-up">
+    <a href="https://12menarastudio.github.io/ethereal-botanical/" target="_blank" class="link-block">
+        <div class="img-wrapper">
+            <span class="label-kategori label-z-20" style="background: var(--gold); color: var(--navy);">New VIP</span>
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=600&auto=format&fit=crop" alt="Ethereal Botanical" class="img-cover">
+        </div>
+    </a>
+    <div class="info-portfolio">
+        <div>
+            <h3>Ethereal Botanical</h3>
+            <p>Nuansa alam yang elegan dengan sentuhan botani premium dan melodi yang menenangkan.</p>
+        </div>
+        <div class="action-links">
+            <a href="https://12menarastudio.github.io/ethereal-botanical/" target="_blank" class="link-beli link-beli-active">👁️ Demo</a>
+            <span class="divider">|</span>
+            <a href="javascript:void(0)" onclick="bukaModalTema('Tema Ethereal Botanical')" class="link-beli">🛒 Pesan</a>
+        </div>
+    </div>
+</div>
                     <div class="card-portfolio" data-aos="fade-up">
                         <a href="romeo-juliet/index.html" target="_blank" class="link-block">
                             <div class="img-wrapper">
@@ -493,9 +512,9 @@
                                 <p>Desain eksklusif bernuansa biru gelap dan emas yang megah. Dilengkapi animasi premium.</p>
                             </div>
                             <div class="action-links">
-                                <a href="romeo-juliet/index.html" target="_blank" class="link-beli link-beli-active">👁️ Demo</a>
+                                <a href="romeo-juliet/index.html" target="_blank" class="link-beli link-beli-active"> Demo</a>
                                 <span class="divider">|</span>
-                                <a href="javascript:void(0)" onclick="bukaModalTema('Tema Midnight Sapphire')" class="link-beli">🛒 Pesan</a>
+                                <a href="javascript:void(0)" onclick="bukaModalTema('Tema Midnight Sapphire')" class="link-beli"> Pesan</a>
                             </div>
                         </div>
                     </div>
@@ -513,7 +532,7 @@
                                 <p>Elegan dan berwibawa. Perpaduan warna biru malam dan emas, sangat cocok untuk resepsi di gedung.</p>
                             </div>
                             <div class="action-links">
-                                <a href="javascript:void(0)" onclick="bukaModalTema('The Royal Navy')" class="link-beli">🛒 Pesan Tema Ini ⟶</a>
+                                <a href="javascript:void(0)" onclick="bukaModalTema('The Royal Navy')" class="link-beli"> Pesan Tema Ini </a>
                             </div>
                         </div>
                     </div>
@@ -531,7 +550,7 @@
                                 <p>Punya konsep sendiri? Tim Prompt Engineer kami siap merakit ilustrasi khusus untuk Anda.</p>
                             </div>
                             <div class="action-links">
-                                <a href="javascript:void(0)" onclick="bukaModalTema('Custom AI Tema')" class="link-beli">💡 Konsultasi ⟶</a>
+                                <a href="javascript:void(0)" onclick="bukaModalTema('Custom AI Tema')" class="link-beli"> Konsultasi </a>
                             </div>
                         </div>
                     </div>
@@ -573,7 +592,7 @@
                 
                 <div class="grid-testi">
                     <div class="card-testi" data-aos="fade-up">
-                        <div class="stars">★★★★★</div>
+                        <div class="stars"></div>
                         <p class="testi-text">"Awalnya ragu pakai undangan digital karena takut terkesan murahan. Tapi pas lihat hasil dari 12 Menara, mertua saya sampai kagum! Elegan banget dan buku tamunya sangat membantu pendataan."</p>
                         <div class="testi-client">
                             <div class="testi-avatar">D</div>
@@ -585,7 +604,7 @@
                     </div>
 
                     <div class="card-testi" data-aos="fade-up" data-aos-delay="100">
-                        <div class="stars">★★★★★</div>
+                        <div class="stars"></div>
                         <p class="testi-text">"Tim 12 Menara gila sih. Saya cuma ngasih ide warna, dan desain AI yang mereka buat jauh lebih bagus dari bayangan saya. Revisi juga cepat tanggap. Super recommended untuk calon pengantin!"</p>
                         <div class="testi-client">
                             <div class="testi-avatar">F</div>
@@ -619,7 +638,7 @@
                     </div>
 
                     <div class="card-harga vip">
-                        <div class="badge-populer">✨ PALING DIREKOMENDASIKAN</div>
+                        <div class="badge-populer"> PALING DIREKOMENDASIKAN</div>
                         <h3 class="harga-title">Gold VIP</h3>
                         
                         <div class="harga-coret">Rp 650.000 <span class="badge-diskon">Hemat 45%</span></div>
@@ -685,7 +704,7 @@
             <h2 class="cta-title" data-aos="zoom-in">Siap Menciptakan Undangan Impian?</h2>
             <p class="cta-desc" data-aos="fade-up">Diskusikan konsep pernikahan Anda dengan tim kami sekarang juga.</p>
             <button onclick="bukaModal()" class="btn-wa-besar" data-aos="fade-up" data-aos-delay="100">
-                💬 Hubungi Konsultan Kami
+                 Hubungi Konsultan Kami
             </button>
         </section>
     </main>
@@ -694,7 +713,7 @@
         <span class="footer-logo">12 Menara Studio</span>
         <p class="footer-text">Spesialis Undangan Pernikahan Digital Eksklusif</p>
         <div class="footer-divider"></div>
-        <p class="footer-text footer-copyright">© 2026 12 Menara Studio. Hak Cipta Dilindungi.</p>
+        <p class="footer-text footer-copyright">� 2026 12 Menara Studio. Hak Cipta Dilindungi.</p>
     </footer>
 
     <div class="modal-overlay" id="orderModal" onclick="tutupModalLuar(event)">
@@ -712,6 +731,7 @@
                         <select class="form-control" id="waTema" required>
                             <option value="" disabled selected>Pilih Tema atau Paket...</option>
                             <option value="Tema Midnight Sapphire">Tema Midnight Sapphire</option>
+                            <option value="Tema Ethereal Botanical">Tema Ethereal Botanical</option>
                             <option value="Tema Royal Navy">Tema Royal Navy</option>
                             <option value="Tema Custom AI">Tema Custom AI</option>
                             <option value="Paket Silver">Paket Silver Lite (Rp 150K)</option>
@@ -736,14 +756,14 @@
                     </div>
                     
                     <div class="modal-footer">
-                        <button type="submit" class="btn-submit-modal">📲 Lanjut ke WhatsApp</button>
+                        <button type="submit" class="btn-submit-modal"> Lanjut ke WhatsApp</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     
-    <a href="https://wa.me/6281235064233?text=Halo%2012%20Menara%20Studio,%20saya%20butuh%20info%20undangan%20VIP" target="_blank" class="btn-wa-float">💬</a>
+    <a href="https://wa.me/6281235064233?text=Halo%2012%20Menara%20Studio,%20saya%20butuh%20info%20undangan%20VIP" target="_blank" class="btn-wa-float"></a>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -769,7 +789,7 @@
             const tanggal = document.getElementById('waTanggal').value;
             const catatan = document.getElementById('waCatatan').value;
             const nomorAdmin = "6281235064233"; 
-            const teksPesan = `Halo Konsultan 12 Menara! 👑\nSaya tertarik untuk memesan Undangan Digital VIP.\n\n*Detail Pesanan:*\n- Paket/Tema : ${tema}\n- Nama Pasangan : ${nama}\n- Rencana Acara : ${tanggal}\n- Catatan : ${catatan ? catatan : "Tidak ada"}\n\nMohon info detail dan langkah selanjutnya. Terima kasih!`;
+            const teksPesan = `Halo Konsultan 12 Menara! \nSaya tertarik untuk memesan Undangan Digital VIP.\n\n*Detail Pesanan:*\n- Paket/Tema : ${tema}\n- Nama Pasangan : ${nama}\n- Rencana Acara : ${tanggal}\n- Catatan : ${catatan ? catatan : "Tidak ada"}\n\nMohon info detail dan langkah selanjutnya. Terima kasih!`;
             const linkWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(teksPesan)}`;
             window.open(linkWA, '_blank');
             tutupModal();
